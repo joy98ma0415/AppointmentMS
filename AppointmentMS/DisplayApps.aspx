@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AppointmentMS._Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DisplayApps.aspx.cs" Inherits="AppointmentMS.DisplayApps" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         function getWidth() {
             var intViewportWidth = window.innerWidth;
@@ -53,92 +53,28 @@
             <asp:MenuItem NavigateUrl="~/DisplayApps.aspx" Text="診所預約查詢" Value="診所預約查詢"></asp:MenuItem>
         </Items>
     </asp:Menu>
-    <h1 class="textAlign">Appointment Management System Using ASP.NET</h1>
-    <p class="textAlign">&nbsp;</p>
-    <table style="border-top: silver thin solid; border-bottom-width: thin; border-bottom-color: silver; width: 855px">
+    <div>
+        <h1 class="textAlign">Appointment Management System Using ASP.NET</h1>
+    </div>
+    <table style="width: 100%">
         <tr>
-            <td style="width: 539px; height: 255px">
-                <table style="width: 344px; height: 186px">
-                    <tr>
-                        <td style="width: 122px">病人姓名 :</td>
-                        <td style="width: 122px">
-                            <asp:DropDownList ID="DropDownListPatient" runat="server"
-                                Width="180px" AutoPostBack="True"
-                                OnSelectedIndexChanged="DropDownListPatient_SelectedIndexChanged">
-                            </asp:DropDownList></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 122px">病人編號 :</td>
-                        <td style="width: 122px">
-                            <asp:TextBox ID="TextBoxID" runat="server" Width="174px"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 122px">姓名 :</td>
-                        <td style="width: 122px">
-                            <asp:TextBox ID="TextBoxName" runat="server" Width="174px"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 122px">生日 :</td>
-                        <td style="width: 122px">
-                            <asp:TextBox ID="TextBoxDOB" runat="server" Width="173px"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 122px">地址 :</td>
-                        <td style="width: 122px">
-                            <asp:TextBox ID="TextBoxAddress" runat="server" Width="173px"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 122px; height: 1px">郵遞區號 :</td>
-                        <td style="width: 122px; height: 1px">
-                            <asp:TextBox ID="TextBoxPostCode" runat="server" Width="173px"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 122px; height: 1px">電話 :</td>
-                        <td style="width: 122px; height: 1px">
-                            <asp:TextBox ID="TextBoxPhone" runat="server" Width="173px"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 122px; height: 1px">預約時間 :</td>
-                        <td style="width: 122px; height: 1px">
-                            <asp:DropDownList ID="DropDownListApointment" runat="server" Width="180px">
-                            </asp:DropDownList></td>
-                    </tr>
-                </table>
-                <br />
-                <br />
-                <asp:Button ID="Button1" runat="server" Text="預約看診" OnClick="Button1_Click" />
-            <td style="width: 663px; height: 255px">
-                <asp:Calendar ID="CalendarDentist" runat="server" BackColor="White"
-                    BorderColor="#999999" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black"
-                    Height="224px" OnDayRender="CalendarDentist_DayRender" OnSelectionChanged="CalendarDentist_SelectionChanged"
-                    Width="401px" DayNameFormat="Shortest" CellPadding="4">
-                    <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-                    <SelectorStyle BackColor="#CCCCCC" />
-                    <WeekendDayStyle BackColor="#FFFFCC" />
-                    <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-                    <OtherMonthDayStyle ForeColor="#808080" />
-                    <NextPrevStyle VerticalAlign="Bottom" />
-                    <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-                    <TitleStyle BackColor="#999999" Font-Bold="True" BorderColor="Black" />
-                </asp:Calendar>
+            <td style="color: #333300">病人姓名 :<asp:DropDownList ID="ddlPatient" runat="server"
+                Width="180px" AutoPostBack="True"
+                DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="PatientID">
+            </asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server"
+                    ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                    SelectCommand="SELECT [Name], [PatientID] FROM [Patient]"></asp:SqlDataSource>
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: silver thin solid; height: 4px">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="2" style="border-top: silver thin solid; height: 4px"
-                bgcolor="#669900">
-                <asp:Label ID="LabelMessage" runat="server" Font-Bold="True" ForeColor="White"></asp:Label></td>
-        </tr>
-        <tr>
-            <td colspan="2" style="border-top: silver thin solid; height: 4px">
+            <td>
                 <div align="center">
-                    <asp:GridView ID="GridViewAppointment" runat="server" AllowPaging="True"
+                    <asp:GridView ID="viewAp" runat="server" AllowPaging="True"
                         AutoGenerateColumns="False" CellPadding="4" PageSize="5"
-                        Width="784px" ForeColor="Black" GridLines="Vertical" AllowSorting="True"
+                        Width="467px" ForeColor="Black" GridLines="Vertical" AllowSorting="True"
                         DataKeyNames="AptmentID" DataSourceID="SqlDataSource1"
-                        OnRowDeleted="GridViewAppointment_RowDeleted" BackColor="White" BorderColor="#DEDFDE"
+                        BackColor="White" BorderColor="#DEDFDE"
                         BorderStyle="None" BorderWidth="1px">
                         <FooterStyle BackColor="#CCCC99" />
                         <RowStyle BackColor="#F7F7DE" />
@@ -149,7 +85,7 @@
                                 SortExpression="PatientID" />
                             <asp:BoundField DataField="Name" HeaderText="病人姓名"
                                 SortExpression="Name" />
-                            <asp:BoundField DataField="DateOfAptment" HeaderText="預約日期" DataFormatString="{0:d}"
+                            <asp:BoundField DataField="DateOfAptment" DataFormatString="{0:d}" HeaderText="預約日期"
                                 SortExpression="DateOfAptment" />
                             <asp:BoundField DataField="Time"
                                 HeaderText="預約時間" SortExpression="Time" />
@@ -170,11 +106,15 @@
                     ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
                     DeleteCommand="DELETE FROM [Aptment] WHERE [AptmentID] = @AptmentID"
                     InsertCommand="INSERT INTO [Aptment] ([PatientID], [DateOfAptment], [Time]) VALUES (@PatientID, @DateOfAptment, @Time)"
-                    SelectCommand="SELECT Aptment.AptmentID, Aptment.PatientID, Aptment.DateOfAptment, Aptment.Time, Patient.Name, Patient.DateOfBirth FROM Aptment INNER JOIN Patient ON Aptment.PatientID = Patient.PatientID"
+                    SelectCommand="SELECT Aptment.AptmentID, Aptment.PatientID, Aptment.DateOfAptment, Aptment.Time, Patient.Name, Patient.DateOfBirth FROM Aptment INNER JOIN Patient ON Aptment.PatientID = Patient.PatientID WHERE Aptment.PatientID = @pid"
                     UpdateCommand="UPDATE [Aptment] SET [PatientID] = @PatientID, [DateOfAptment] = @DateOfAptment, [Time] = @Time WHERE [AptmentID] = @AptmentID">
                     <DeleteParameters>
                         <asp:Parameter Name="AptmentID" Type="Int32" />
                     </DeleteParameters>
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ddlPatient" Name="pid"
+                            PropertyName="SelectedValue" />
+                    </SelectParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="PatientID" Type="Int32" />
                         <asp:Parameter Name="DateOfAptment" Type="DateTime" />
