@@ -60,22 +60,53 @@
         <tr>
             <td>
                 <div align="center">
-                    <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" CellPadding="4" DataSourceID="SqlDataSource1" GridLines="Vertical" Height="50px" Width="393px" OnDataBound="DetailsView1_DataBound" ForeColor="Black" HeaderText="病人資料管理" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateRows="False" DataKeyNames="PatientID">
-                        <FooterStyle BackColor="#CCCC99" />
-                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <asp:DetailsView ID="DetailsView1" runat="server" AllowPaging="True" CellPadding="3" DataSourceID="SqlDataSource1" GridLines="Horizontal" Height="50px" Width="393px" OnDataBound="DetailsView1_DataBound" HeaderText="病人資料管理" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" AutoGenerateRows="False" DataKeyNames="PatientID">
+                        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+                        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+                        <FieldHeaderStyle ForeColor="#660033" Font-Bold="true" Font-Italic="true" />
                         <Fields>
-                            <asp:BoundField DataField="PatientID" HeaderText="病人編號" ReadOnly="True" SortExpression="PatientID" />
-                            <asp:BoundField DataField="Name" HeaderText="姓名" SortExpression="Name" />
-                            <asp:BoundField DataField="DateOfBirth" HeaderText="生日" SortExpression="DateOfBirth" DataFormatString="{0:d}" />
-                            <asp:BoundField DataField="Address" HeaderText="地址" SortExpression="Address" />
-                            <asp:BoundField DataField="PostCode" HeaderText="郵遞區號" SortExpression="PostCode" />
-                            <asp:BoundField DataField="Phone" HeaderText="電話" SortExpression="Phone" />
-                            <asp:CommandField ShowDeleteButton="true" ShowEditButton="true" ShowInsertButton="true" />
+                            <asp:BoundField DataField="PatientID" HeaderText="病人編號" ReadOnly="True" SortExpression="PatientID">
+                                <ControlStyle ForeColor="Black" />
+                                <FooterStyle ForeColor="Black" />
+                                <HeaderStyle ForeColor="Black" />
+                                <ItemStyle ForeColor="Black" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Name" HeaderText="姓名" SortExpression="Name">
+                            <ControlStyle ForeColor="#660033" />
+                            <FooterStyle ForeColor="#660033" />
+                            <HeaderStyle ForeColor="#660033" />
+                            <ItemStyle ForeColor="#660033" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="DateOfBirth" HeaderText="生日" SortExpression="DateOfBirth" DataFormatString="{0:d}">
+                            <ControlStyle ForeColor="#660033" />
+                            <FooterStyle ForeColor="#660033" />
+                            <HeaderStyle ForeColor="#660033" />
+                            <ItemStyle ForeColor="#660033" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Address" HeaderText="地址" SortExpression="Address">
+                            <ControlStyle ForeColor="#660033" />
+                            <FooterStyle ForeColor="#660033" />
+                            <HeaderStyle ForeColor="#660033" />
+                            <ItemStyle ForeColor="#660033" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="PostCode" HeaderText="郵遞區號" SortExpression="PostCode">
+                            <ControlStyle ForeColor="#660033" />
+                            <FooterStyle ForeColor="#660033" />
+                            <HeaderStyle ForeColor="#660033" />
+                            <ItemStyle ForeColor="#660033" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Phone" HeaderText="電話" SortExpression="Phone">
+                            <ControlStyle ForeColor="#660033" />
+                            <FooterStyle ForeColor="#660033" />
+                            <HeaderStyle ForeColor="#660033" />
+                            <ItemStyle ForeColor="#660033" />
+                            </asp:BoundField>
+                            <asp:CommandField ShowDeleteButton="true" ShowEditButton="true" />
                         </Fields>
-                        <HeaderStyle BackColor="#6B696B" Font-Bold="true" ForeColor="White" />
-                        <AlternatingRowStyle BackColor="White" />
-                        <EditRowStyle BackColor="#CE5D5A" Font-Bold="true" ForeColor="White" />
-                        <RowStyle BackColor="#F7F7DE" />
+                        <HeaderStyle BackColor="#4A3C8C" Font-Bold="true" ForeColor="#F7F7F7" />
+                        <AlternatingRowStyle BackColor="#F7F7F7" />
+                        <EditRowStyle BackColor="#738A9C" Font-Bold="true" ForeColor="#F7F7F7" />
+                        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
                     </asp:DetailsView>
                 </div>
             </td>
